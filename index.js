@@ -13,13 +13,11 @@ module.exports = postcss.plugin('postcss-demo', (opts = { }) => {
         // We work with each `decl` object here.
 
         let { value } = decl;
-        decl.replaceWith(`
-          display: -webkit-box;
-          overflow: hidden;
-          -webkit-line-clamp: ${value};
-          -webkit-box-orient: vertical;
-        `)
-
+        let display = postcss.decl({prop: 'display', value: '-webkit-box'});
+        let overflow = postcss.decl({prop: 'overflow', value: 'hidden'});
+        let clamp = postcss.decl({prop: '-webkit-line-clamp', value});
+        let orient = postcss.decl({prop: '-webkit-box-orient', value: 'vertical'});
+        decl.replaceWith([display,overflow,clamp, orient]);
       });
     });
   }
