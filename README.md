@@ -4,15 +4,21 @@
 
 [PostCSS]: https://github.com/postcss/postcss
 
+该插件能去除css文件中的所有注释，并实现了自定义属性lines，用于多行截断。
 ```css
 .foo {
-    /* Input example */
+    height: 20px;
+    lines: 1;/* 这是一个自定义属性 */
 }
 ```
 
 ```css
 .foo {
-  /* Output example */
+    height: 20px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 ```
 
